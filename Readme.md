@@ -1,4 +1,4 @@
-# Quarkus Reproducer: Jackson Builder
+# Quarkus [#3652](https://github.com/quarkusio/quarkus/issues/3652) Reproducer: Jackson + Builder pattern
 
 This project shows Jackson deserialization errors in native mode. These errors 
 occur when making use of Jackson annotations (@JsonPOJOBuilder) supporting the 
