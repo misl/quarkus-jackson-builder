@@ -1,16 +1,13 @@
 package io.quarkus.reproducer.jacksonbuilder.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
+import io.quarkus.runtime.annotations.RegisterForReflection;
 
 import java.io.IOException;
 
@@ -19,6 +16,7 @@ import java.io.IOException;
  *
  * @author Minto van der Sluis
  */
+@RegisterForReflection
 public class SimplePojoModel {
 
   // -------------------------------------------------------------------------
@@ -33,7 +31,7 @@ public class SimplePojoModel {
 
   private int version = 1;
   private String id = null;
-  private String value= null;
+  private String value = null;
 
   // -------------------------------------------------------------------------
   // Constructors
@@ -87,7 +85,6 @@ public class SimplePojoModel {
   public void setValue( String value ) {
     this.value = value;
   }
-
 
   // -------------------------------------------------------------------------
   // Private methods
