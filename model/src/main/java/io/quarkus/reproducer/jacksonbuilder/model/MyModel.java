@@ -52,7 +52,9 @@ public class MyModel {
   // -------------------------------------------------------------------------
 
   public String toJson() throws IOException {
-    return getObjectMapper().writeValueAsString( this );
+    String json = getObjectMapper().writeValueAsString( this );
+    System.out.println( "-------> MyModel.toJson(); " + json );
+    return json;
   }
 
   public static String toJson( final MyModel model ) throws IOException {
