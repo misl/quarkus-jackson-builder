@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Minto van der Sluis
  */
-public class MyModelTest {
+public class ModelWithBuilderTest {
 
   // -------------------------------------------------------------------------
   // Test cases
@@ -18,10 +18,10 @@ public class MyModelTest {
   @Test
   public void testBuilderMinimal() {
     // prepare
-    MyModel.Builder builder = new MyModel.Builder( "id1" );
+    ModelWithBuilder.Builder builder = new ModelWithBuilder.Builder( "id1" );
 
     // execute
-    MyModel data = builder.build();
+    ModelWithBuilder data = builder.build();
 
     // verify
     assertThat( data.getVersion() ).isEqualTo( 1 );
@@ -32,12 +32,12 @@ public class MyModelTest {
   @Test
   public void testBuilder() {
     // prepare
-    MyModel.Builder builder = new MyModel.Builder( "id2" )
+    ModelWithBuilder.Builder builder = new ModelWithBuilder.Builder( "id2" )
         .withVersion( 2 )
         .withValue( "value" );
 
     // execute
-    MyModel data = builder.build();
+    ModelWithBuilder data = builder.build();
 
     // verify
     assertThat( data.getVersion() ).isEqualTo( 2 );
@@ -48,13 +48,13 @@ public class MyModelTest {
   @Test
   public void testBuilderCloneConstructor() {
     // prepare
-    MyModel original = new MyModel.Builder( "id1" )
+    ModelWithBuilder original = new ModelWithBuilder.Builder( "id1" )
         .withVersion( 3 )
         .withValue( "val" )
         .build();
 
     // execute
-    MyModel clone = new MyModel.Builder( original ).build();
+    ModelWithBuilder clone = new ModelWithBuilder.Builder( original ).build();
 
     // verify
     assertThat( clone.getVersion() ).isEqualTo( 3 );

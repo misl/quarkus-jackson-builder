@@ -20,8 +20,8 @@ import java.io.IOException;
  * @author Minto van der Sluis
  */
 @JsonPropertyOrder({"version", "id", "value"})
-@JsonDeserialize(builder = MyModel.Builder.class)
-public class MyModel {
+@JsonDeserialize(builder = ModelWithBuilder.Builder.class)
+public class ModelWithBuilder {
 
   // -------------------------------------------------------------------------
   // Class attributes
@@ -41,7 +41,7 @@ public class MyModel {
   // Constructors
   // -------------------------------------------------------------------------
 
-  private MyModel( final Builder builder ) {
+  private ModelWithBuilder( final Builder builder ) {
     this.version = builder.version;
     this.id = builder.id;
     this.value = builder.value;
@@ -53,16 +53,16 @@ public class MyModel {
 
   public String toJson() throws IOException {
     String json = getObjectMapper().writeValueAsString( this );
-    System.out.println( "-------> MyModel.toJson(); " + json );
+    System.out.println( "-------> ModelWithBuilder.toJson(); " + json );
     return json;
   }
 
-  public static String toJson( final MyModel model ) throws IOException {
+  public static String toJson( final ModelWithBuilder model ) throws IOException {
     return model.toJson();
   }
 
-  public static MyModel fromJson( final String json ) throws IOException {
-    return getObjectMapper().readerFor( MyModel.class ).readValue( json );
+  public static ModelWithBuilder fromJson( final String json ) throws IOException {
+    return getObjectMapper().readerFor( ModelWithBuilder.class ).readValue( json );
   }
 
   // -------------------------------------------------------------------------
@@ -107,7 +107,7 @@ public class MyModel {
       this.id = id;
     }
 
-    public Builder( final MyModel object ) {
+    public Builder( final ModelWithBuilder object ) {
       this.version = object.version;
       this.id = object.id;
       this.value = object.value;
@@ -129,8 +129,8 @@ public class MyModel {
       return this;
     }
 
-    public MyModel build() {
-      return new MyModel( this );
+    public ModelWithBuilder build() {
+      return new ModelWithBuilder( this );
     }
   }
 
