@@ -53,7 +53,6 @@ public class ModelWithBuilder {
 
   public String toJson() throws IOException {
     String json = getObjectMapper().writeValueAsString( this );
-    System.out.println( "-------> ModelWithBuilder.toJson(); " + json );
     return json;
   }
 

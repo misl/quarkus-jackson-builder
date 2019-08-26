@@ -17,7 +17,7 @@ import java.io.IOException;
  * @author Minto van der Sluis
  */
 @RegisterForReflection
-public class SimplePojoModel {
+public class RegisteredPojoModel {
 
   // -------------------------------------------------------------------------
   // Class attributes
@@ -37,7 +37,7 @@ public class SimplePojoModel {
   // Constructors
   // -------------------------------------------------------------------------
 
-  public SimplePojoModel() {
+  public RegisteredPojoModel() {
   }
 
   // -------------------------------------------------------------------------
@@ -46,16 +46,15 @@ public class SimplePojoModel {
 
   public String toJson() throws IOException {
     String json = getObjectMapper().writeValueAsString( this );
-    System.out.println( "-------> SimplePojoModel.toJson(); " + json );
     return json;
   }
 
-  public static String toJson( final SimplePojoModel model ) throws IOException {
+  public static String toJson( final RegisteredPojoModel model ) throws IOException {
     return model.toJson();
   }
 
-  public static SimplePojoModel fromJson( final String json ) throws IOException {
-    return getObjectMapper().readerFor( SimplePojoModel.class ).readValue( json );
+  public static RegisteredPojoModel fromJson( final String json ) throws IOException {
+    return getObjectMapper().readerFor( RegisteredPojoModel.class ).readValue( json );
   }
 
   // -------------------------------------------------------------------------

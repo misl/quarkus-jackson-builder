@@ -1,6 +1,6 @@
 package io.quarkus.reproducer;
 
-import io.quarkus.reproducer.jacksonbuilder.model.SimplePojoModel;
+import io.quarkus.reproducer.jacksonbuilder.model.RegisteredPojoModel;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
@@ -10,11 +10,11 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 @QuarkusTest
-public class SimplePojoModelResourceTest {
+public class RegisteredPojoModelResourceTest {
 
   @Test
   public void testSimplePojoModel() throws IOException {
-    SimplePojoModel model = new SimplePojoModel();
+    RegisteredPojoModel model = new RegisteredPojoModel();
     model.setId( "123" );
     model.setVersion( 3 );
     model.setValue( "some" );
@@ -22,7 +22,7 @@ public class SimplePojoModelResourceTest {
     given()
         .contentType( "application/json" )
         .body( model.toJson() )
-        .when().post( "/simplepojomodel" )
+        .when().post( "/registeredpojomodel" )
         .then()
         .statusCode( 201 )
         .body( "id", equalTo( "123" ) )
